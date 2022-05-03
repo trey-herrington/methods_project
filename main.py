@@ -41,14 +41,10 @@ while user == 0:
                 result = cursor.fetchall()
                 pOrder = orderHist.orderhistory(result)
                 user.user(result)
-                goto end_loop
+                user = 0
             else:
                 print ("Dum dum leave\n")
                 print ("Incorrect Username and Password, please try again.\n")
-                break
-            
-        continue    
-        end_loop:
             
         while user == 0:
             user = int(input("1. Inventory Options\n2. Account Options\n3. Cart Options\n4. Order History Options\n5. Exit Program\n"))

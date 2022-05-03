@@ -23,48 +23,48 @@ class Inventory:
 
     def getID(self):
         userinput = input("Enter the title of the movie you wish to search: ")
-        cursor.execute("SELECT * FROM Inventory WHERE Title = \"%s\"" % userinput)
+        cursor.execute("SELECT * FROM movies WHERE Title = \"%s\"" % userinput)
         result = cursor.fetchall()
         for x in result:
             print(x[0])
 
     def getdirector(self):
         userinput = input("Enter the title of the movie you wish to search: ")
-        cursor.execute("SELECT * FROM Inventory WHERE Title = \"%s\"" % userinput)
+        cursor.execute("SELECT * FROM movies WHERE Title = \"%s\"" % userinput)
         result = cursor.fetchall()
         for x in result:
             print(x[2])
 
     def getyear(self):
         userinput = input("Enter the title of the movie you wish to search: ")
-        cursor.execute("SELECT * FROM Inventory WHERE Title = \"%s\"" % userinput)
+        cursor.execute("SELECT * FROM movies WHERE Title = \"%s\"" % userinput)
         result = cursor.fetchall()
         for x in result:
             print(x[3])
 
     def getgenre(self):
         userinput = input("Enter the title of the movie you wish to search: ")
-        cursor.execute("SELECT * FROM Inventory WHERE Title = \"%s\"" % userinput)
+        cursor.execute("SELECT * FROM movies WHERE Title = \"%s\"" % userinput)
         result = cursor.fetchall()
         for x in result:
             print(x[4])
 
     def getamount(self):
         userinput = input("Enter the title of the movie you wish to search: ")
-        cursor.execute("SELECT * FROM Inventory WHERE Title = \"%s\"" % userinput)
+        cursor.execute("SELECT * FROM movies WHERE Title = \"%s\"" % userinput)
         result = cursor.fetchall()
         for x in result:
             print(x[5])
 
     def getprice(self):
         userinput = input("Enter the title of the movie you wish to search: ")
-        cursor.execute("SELECT * FROM Inventory WHERE Title = \"%s\"" % userinput)
+        cursor.execute("SELECT * FROM movies WHERE Title = \"%s\"" % userinput)
         result = cursor.fetchall()
         for x in result:
             print(x[6])
 
     def displayinventory(self):
-        cursor.execute("SELECT * FROM Inventory")
+        cursor.execute("SELECT * FROM movies")
         result = cursor.fetchall()
         for x in result:
             print("ID:", x[0], "\nTitle:", x[1], "\nDirector:", x[2], "\nYear:", x[3], "\nGenre:", x[4], "\nAmount:",

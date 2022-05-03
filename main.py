@@ -29,20 +29,20 @@ while user == 0:
 
     if user == 1:
         #if user sign in successful, else will loop to same menu:
-        while (user == 1)
+        while (user == 1):
             Username = input("What is your Username?\n")
             Password = input("What is your Password?\n")
             query = "SELECT FROM user WHERE Username = %s AND SELECT FROM user WHERE Password = %s"
             data = (Username, Password)
             result = cursor.fetchall()
-            if Username == result[0] AND Password == result[1]  
+            if Username == result[0] AND Password == result[1]:  
                 query = "SELECT userID FROM user WHERE Username = %s"
                 data = Username
                 result = cursor.fetchall()
                 pOrder = orderHist.orderhistory(result)
                 user.user(result)
                 goto end_loop
-            else
+            else:
                 print ("Dum dum leave\n")
                 print ("Incorrect Username and Password, please try again.\n")
                 break

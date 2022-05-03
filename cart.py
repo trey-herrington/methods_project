@@ -33,40 +33,49 @@ class cart:
         return
 
     def getUserID(self):
-        return UserID
+        return self.UserID
 
     def getMovieID(self):
         query = "SELECT MovieID FROM cart WHERE UserID=%d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
         return result
 
-    def getTitle():
+    def getTitle(self):
         query = "SELECT Title FROM cart WHERE UserID=%d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
         return result
 
-    def getAmount():
-        return amount
+    def getAmount(self):
+        query = "SELECT amount FROM cart WHERE UserID=%d"
+        data = self.UserID
+        cursor.execute(query,data)
+        result = cursor.fetchall()
+        return result
 
-    def getTotal():
-        return total
+    def getTotal(self):
+        query = "SELECT total FROM cart WHERE UserID=%d"
+        data = self.UserID
+        cursor.execute(query,data)
+        result = cursor.fetchall()
+        return result
 
     def dispCart(self):
         query = "SELECT * FROM cart WHERE UserID=%d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
         for x in result:
             print("Movie ID: ", x[1], "\nTitle: ", x[2], "\nAmount: ", x[3], "\nTotal: ", x[4], "\nDate Ordered: ", x[5])
         return
 
-    def addToCart(MovieID,Title):
+    def addToCart(MovieID,Title,amount,total):
         query = "INSERT INTO `cart` (`UserID`, `MovieID`, `Title`, `amount`, `total`) VALUES (%d,%d,%s,%d,%d)"
-        data = (UserID,MovieID,Title,amount,total)
+        data = (self.UserID,MovieID,Title,amount,total)
         cursor.execute(query,data)
         print("Added to cart")
         return 
+  

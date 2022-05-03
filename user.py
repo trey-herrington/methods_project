@@ -83,7 +83,7 @@ class user:
             print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Number: ", x[3], "\nCVV: ", x[4], "\nCCexpire: ", x[5], "\nPassword: ", \
                   x[6], "\n")
     
-    def pushUser(self, Username, Name, Birthday, CreditCardInfo):
+    def pushUser(self, Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password):
         user_query = "SELECT MAX(userID) FROM user"
         cursor.execute(user_query)
         UserID = cursor.fetchall() + 1

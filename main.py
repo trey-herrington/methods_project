@@ -1,4 +1,5 @@
 import inventory
+import pastOrder
 import mysql.connector
 import sys
 
@@ -28,6 +29,7 @@ while user == 0:
     if user == 1:
         print("sign in function")
         #if user sign in successful, else will loop to same menu:
+        pOrder = orderHist.orderhistory("""needs user ID here""")
         user = 0
         while user == 0:
             user = int(input("1. Inventory Options\n2. Account Options\n3. Cart Options\n4. Order History Options\n5. Exit Program\n"))
@@ -110,7 +112,7 @@ while user == 0:
                 while user == 0:
                     user = int(input("1. View Order History\n2. Exit Program"))
                     if user == 1:
-                        print("view history function")
+                        pOrder.viewOrderHistory()
                         user = 0
                     elif user == 2:
                         exit()

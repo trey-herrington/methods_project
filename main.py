@@ -28,10 +28,28 @@ while user == 0:
     user = int(input("Welcome to the store!\n1. Sign In\n2. Create Account\n3. Exit Program\n"))
 
     if user == 1:
-        print("sign in function")
         #if user sign in successful, else will loop to same menu:
-        pOrder = orderHist.orderhistory("""needs user ID here""")
-        user = 0
+        while (user == 1)
+            Username = input("What is your Username?\n")
+            Password = input("What is your Password?\n")
+            query = "SELECT FROM user WHERE Username = %s AND SELECT FROM user WHERE Password = %s"
+            data = (Username, Password)
+            result = cursor.fetchall()
+            if Username == result[0] AND Password == result[1]  
+                query = "SELECT userID FROM user WHERE Username = %s"
+                data = Username
+                result = cursor.fetchall()
+                pOrder = orderHist.orderhistory(result)
+                user.user(result)
+                goto end_loop
+            else
+                print ("Dum dum leave\n")
+                print ("Incorrect Username and Password, please try again.\n")
+                break
+            
+        continue    
+        end_loop:
+            
         while user == 0:
             user = int(input("1. Inventory Options\n2. Account Options\n3. Cart Options\n4. Order History Options\n5. Exit Program\n"))
 

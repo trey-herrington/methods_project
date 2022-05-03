@@ -35,7 +35,8 @@ while user == 0:
             if user == 1:
                 user = 0
                 while user == 0:
-                    user = int(input("1. View Full Inventory\n2. Search For Title's ID\n3. Search For Title's Director\n4. Search For Title's Release Year\n5. Search For Title's Genre\n6. Search For Title's Amount Available\n7. Search For Title's Price\n8. Exit Program\n"))
+                    user = int(input("1. View Full Inventory\n2. Search For Title's ID\n3. Search For Title's Director\n4. Search For Title's Release Year\n5. \
+                                     Search For Title's Genre\n6. Search For Title's Amount Available\n7. Search For Title's Price\n8. Exit Program\n"))
                     if user == 1:
                         tmp.displayinventory()
                         user = 0

@@ -154,6 +154,14 @@ while user == 0:
 
     elif user == 2:
         print("create account function")
+        Username = input("What is your Username?\n")
+        Password = input("What is your Password?\n")
+        Name = input("What is your name?\n")
+        Birthday = input("What is your birthday?\n)
+        CreditCardnum = input("What is your Credit Card number?")
+        cvv = input("What is your cvv?")
+        CCexpire = input("What is your Credit Card Expiration Date?")
+        user.pushUser(Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password)
         user = 0
 
     elif user == 3:

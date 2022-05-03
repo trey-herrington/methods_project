@@ -62,7 +62,7 @@ class user:
             print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Info: ", x[3])
         return
     
-    def pushUser(Username, Name, Birthday, CreditCardInfo)
+    def pushUser(Username, Name, Birthday, CreditCardInfo):
         query = "INSERT INTO 'user' ('UserID', 'Username', 'Name', 'Birthday', 'CreditCardInfo') VALUES (%d, %s, %s, %s, %s)"
         data = (UserID, Username, Name, Birthday, CreditCardInfo)
         cursor.execute(query, data)

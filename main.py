@@ -1,5 +1,6 @@
 import inventory
 import pastOrder
+import user
 import mysql.connector
 import sys
 

@@ -66,6 +66,13 @@ class user:
         cursor.execute(query, data)
         result = cursor.fetchall()
         return result
+    
+    def getPassword(self):
+        query = "SELECT Password FROM user WHERE UserID = %d"
+        data = self.UserID
+        cursor.execute(query, data)
+        result = cursor.fetchall()
+        return result
 
     def viewUserInformation(self):
         query = "SELECT * FROM user WHERE UserID = %d"
@@ -73,14 +80,15 @@ class user:
         cursor.execute(query, data)
         result = cursor.fetchall()
         for x in result:
-            print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Info: ", x[3], "\n")
+            print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Number: ", x[3], "\nCVV: ", x[4], "\nCCexpire: ", x[5], "\nPassword: ", \
+                  x[6], "\n")
     
     def pushUser(self, Username, Name, Birthday, CreditCardInfo):
         user_query = "SELECT MAX(userID) FROM user"
         cursor.execute(user_query)
         UserID = cursor.fetchall() + 1
-        query = "INSERT INTO 'user' ('UserID', 'Username', 'Name', 'Birthday', 'CreditCardnum', 'cvv', 'CCexpire') VALUES (%d, %s, %s, %s, %d, %d, %s)"
-        data = (UserID, Username, Name, Birthday, CreditCardInfo)
+        query = "INSERT INTO 'user' ('UserID', 'Username', 'Name', 'Birthday', 'CreditCardnum', 'cvv', 'CCexpire', 'Password') VALUES (%d, %s, %s, %s, %d, %d, %s, %s)"
+        data = (UserID, Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password)
         cursor.execute(query, data)
         print("User added to system\n")
         return

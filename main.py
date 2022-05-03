@@ -35,7 +35,7 @@ while user == 0:
             query = "SELECT FROM user WHERE Username = %s AND SELECT FROM user WHERE Password = %s"
             data = (Username, Password)
             result = cursor.fetchall()
-            if Username == result[0] AND Password == result[1]:  
+            if Username == result[0] and Password == result[1]:  
                 query = "SELECT userID FROM user WHERE Username = %s"
                 data = Username
                 result = cursor.fetchall()

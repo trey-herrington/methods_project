@@ -32,25 +32,27 @@ while user == 0:
         while (user == 1):
             Username = input("What is your Username?\n")
             Password = input("What is your Password?\n")
-            query = "SELECT * FROM user WHERE Username = \"%s\" AND SELECT FROM user WHERE Password = \"%s\"" % Username, Password
-            data = (Username, Password)
+            query = "SELECT Username FROM user WHERE Username = \"%s\"" % Username
+            data = (Username)
             cursor.execute(query, data)
             result = cursor.fetchall()
-            if Username == result[0] and Password == result[1]:
-                query = "SELECT userID FROM user WHERE Username = \"%s\"" % Username
-                data = Username
+            if Username == result:
+                query = "SELECT Password FROM user WHERE Username = \"%s\"" % Username
+                data = (Username)
                 cursor.execute(query, data)
                 result = cursor.fetchall()
-                pOrder = orderHist.orderhistory(result)
-                user.user(result)
-                goto: end_loop
+                
+                if Password == result:
+                    query = "SELECT userID FROM user WHERE Username = \"%s\"" % Username
+                    data = Username
+                    cursor.execute(query, data)
+                    result = cursor.fetchall()
+                    pOrder = orderHist.orderhistory(result)
+                    user = 0
         else:
             print("Dum dum leave\n")
             print("Incorrect Username and Password, please try again.\n")
-            break
-
-        continue
-        end_loop
+            
 
         while user == 0:
             user = int(input(

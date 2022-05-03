@@ -22,50 +22,72 @@ class user:
     def __init__(self, UserID):
         self.UserID = UserID
 
-    def getUserID():
-        return UserID
+    def getUserID(self):
+        return self.UserID
 
-    def getUsername():
+    def getUsername(self):
         query = "SELECT Username FROM user WHERE UserID = %d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
         return result
 
-    def getName():
+    def getName(self):
         query = "SELECT Name FROM user WHERE UserID = %d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
         return result
 
-    def getBirthday():
+    def getBirthday(self):
         query = "SELECT Birthday FROM user WHERE UserID = %d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
         return result
 
-    def getCreditCardInfo():
-        query = "SELECT CreditCardInfo FROM user WHERE UserID = %d"
-        data = UserID
+    def getCreditCardnum(self):
+        query = "SELECT CreditCardnum FROM user WHERE UserID = %d"
+        data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
         return result
 
-    def viewOrderInformation(self):
+    def getcvv(self):
+        query = "SELECT cvv FROM user WHERE UserID = %d"
+        data = self.UserID
+        cursor.execute(query, data)
+        result = cursor.fetchall()
+        return result
+
+    def getCCexpire(self):
+        query = "SELECT getCCexpire FROM user WHERE UserID = %d"
+        data = self.UserID
+        cursor.execute(query, data)
+        result = cursor.fetchall()
+        return result
+
+    def viewUserInformation(self):
         query = "SELECT * FROM user WHERE UserID = %d"
-        data = UserID
+        data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
         for x in result:
-            print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Info: ", x[3])
-        return
+            print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Info: ", x[3], "\n")
     
-    def pushUser(Username, Name, Birthday, CreditCardInfo)
-        query = "INSERT INTO 'user' ('UserID', 'Username', 'Name', 'Birthday', 'CreditCardInfo') VALUES (%d, %s, %s, %s, %s)"
+    def pushUser(self, Username, Name, Birthday, CreditCardInfo):
+        user_query = "SELECT MAX(userID) FROM user"
+        cursor.execute(user_query)
+        UserID = cursor.fetchall() + 1
+        query = "INSERT INTO 'user' ('UserID', 'Username', 'Name', 'Birthday', 'CreditCardnum', 'cvv', 'CCexpire') VALUES (%d, %s, %s, %s, %d, %d, %s)"
         data = (UserID, Username, Name, Birthday, CreditCardInfo)
         cursor.execute(query, data)
-        print("User added to system")
+        print("User added to system\n")
         return
-    
+
+    def popUser(self):
+        query = "DELETE FROM user WHERE UserID = %d"
+        data = self.UserID
+        cursor.execute(query, data)
+        result = cursor.fetchall()
+        return result

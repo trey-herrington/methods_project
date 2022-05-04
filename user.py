@@ -25,6 +25,9 @@ class user:
 
     def getUserID(self):
         return self.UserID
+    
+    def setUserID(self, UserID):
+        self.UserID = UserID
 
     def getUsername(self):
         query = "SELECT Username FROM users WHERE UserID = \"%d\"" % self.userID

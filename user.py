@@ -30,73 +30,73 @@ class user:
         self.UserID = UserID
 
     def getUsername(self):
-        query = "SELECT Username FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT Username FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getName(self):
-        query = "SELECT Name FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT Name FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getBirthday(self):
-        query = "SELECT Birthday FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT Birthday FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getCreditCardnum(self):
-        query = "SELECT CreditCardnum FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT CreditCardnum FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getcvv(self):
-        query = "SELECT cvv FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT cvv FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getCCexpire(self):
-        query = "SELECT getCCexpire FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT getCCexpire FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getPassword(self):
-        query = "SELECT Password FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT Password FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getAddress(self):
-        query = "SELECT Address FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT Address FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getCity(self):
-        query = "SELECT City FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT City FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getState(self):
-        query = "SELECT State FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT State FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getZIP(self):
-        query = "SELECT ZIP FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT ZIP FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def viewUserInformation(self):
-        query = "SELECT * FROM users WHERE UserID = \"%d\"" % self.userID
+        query = "SELECT * FROM users WHERE UserID = \"%d\"" % getUserID(self)
         cursor.execute(query)
         result = cursor.fetchall()
         for x in result:

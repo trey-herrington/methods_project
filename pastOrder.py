@@ -30,35 +30,35 @@ class orderHist:
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result[0]
+        return result[0][0]
 
     def getTitle():
         query = "SELECT Title FROM orderhistory WHERE UserID=%d"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result[0]
+        return result[0][0]
 
     def getAmount():
         query = "SELECT amount FROM orderhistory WHERE UserID=%d"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result[0]
+        return result[0][0]
 
     def getTotal():
         query = "SELECT total FROM orderhistory WHERE UserID=%d"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result[0]
+        return result[0][0]
 
     def getDateOrdered():
         query = "SELECT dateOrdered FROM orderhistory WHERE UserID=%d"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result[0]
+        return result[0][0]
 
     def viewOrderHistory(self):
         query = "SELECT * FROM orderhistory WHERE UserID=%d"

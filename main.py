@@ -47,7 +47,8 @@ while user == 0:
                     data = Username
                     cursor.execute(query, data)
                     result = cursor.fetchall()
-                    pOrder = orderHist.orderhistory(result)
+                    pOrder = orderHist.orderHist(result)
+                    
                     user = 0
         else:
             print("Dum dum leave\n")

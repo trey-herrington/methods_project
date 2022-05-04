@@ -98,7 +98,48 @@ while user == 0:
                 user = int(input(
                     "1. Edit Shipping Information\n2. Edit Payment Information\n3. Delete Account\n4. Exit Program\n"))
                 if user == 1:
-                    print("edit shipping info function")
+                    Userinput = 0
+                    while Userinput = 0:
+                        
+                        print("edit shipping info function")
+                        Address = tmpUser.getAddress()
+                        City = tmpUser.getCity()
+                        State = tmpUser.getState()
+                        ZIP = tmpUser.getZIP()
+                        print("Address: ", Address, "City: ", City, "State: ", State, "ZIP: ", ZIP)
+                        
+                        Userinput = input("1. New Address, 2. New City, 3. New State, 4. New ZIP, 5. Exit Shipment Information")
+                        if Userinput == 1
+                            new_Address = input("What is your new address?")
+                            query = "UPDATE users SET Address = \"%s\" WHERE Address = \"%s\"" %new_Address, %Address
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 2
+                            new_City = input("What is your new city?")
+                            query = "UPDATE users SET City = \"%s\" WHERE City = \"%s\"" %new_City, %City
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 3
+                            new_State = input("What is your new State?")
+                            query = "UPDATE users SET State = \"%s\" WHERE State = \"%s\"" %new_State, %State
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 4
+                            new_Address = input("What is your new ZIP")
+                            query = "UPDATE users SET ZIP = \"%s\" WHERE ZIP = \"%s\"" %new_ZIP, %ZIP
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 5
+                            break
+                    
                     user = 0
                 elif user == 2:
                     Userinput = 0

@@ -22,6 +22,7 @@ except:
 cursor = connection.cursor()
 
 tmp = inventory.Inventory()
+tmpUser = user.user(0)
 
 user = 0
 while user == 0:
@@ -33,26 +34,27 @@ while user == 0:
             Username = input("What is your Username?\n")
             Password = input("What is your Password?\n")
             query = "SELECT Username FROM users WHERE Username = \"%s\"" % Username
-            print("test1")
             cursor.execute(query)
             result = cursor.fetchall()
-            if Username == result:
-                print("test2")
+            if Username == result[0][0]:
                 query = "SELECT Password FROM users WHERE Username = \"%s\"" % Username
                 cursor.execute(query)
                 result = cursor.fetchall()
 
-                if Password == result:
-                    print("test3")
+                if Password == result[0][0]:
                     query = "SELECT userID FROM users WHERE Username = \"%s\"" % Username
                     cursor.execute(query)
                     result = cursor.fetchall()
                     pOrder = pastOrder.orderHist(result)
 
                     user = 0
-        else:
-            print("Dum dum leave\n")
-            print("Incorrect Username and Password, please try again.\n")
+                else:
+                    print(result[0][0])
+                    print("Dum dum leave\n")
+                    print("Incorrect Username and Password, please try again.\n")
+            else:
+                print("Dum dum leave\n")
+                print("Incorrect Username and Password, please try again.\n")
 
         while user == 0:
             user = int(input(
@@ -61,8 +63,7 @@ while user == 0:
         if user == 1:
             user = 0
             while user == 0:
-                user = int(input("1. View Full Inventory\n2. Search For Title's ID\n3. Search For Title's Director\n4. Search For Title's Release Year\n5. \
-                                     Search For Title's Genre\n6. Search For Title's Amount Available\n7. Search For Title's Price\n8. Exit Program\n"))
+                user = int(input("1. View Full Inventory\n2. Search For Title's ID\n3. Search For Title's Director\n4. Search For Title's Release Year\n5. Search For Title's Genre\n6. Search For Title's Amount Available\n7. Search For Title's Price\n8. Exit Program\n"))
                 if user == 1:
                     tmp.displayinventory()
                     user = 0
@@ -158,10 +159,10 @@ while user == 0:
         Password = input("What is your Password?\n")
         Name = input("What is your name?\n")
         Birthday = input("What is your birthday?\n")
-        CreditCardnum = input("What is your Credit Card number?")
-        cvv = input("What is your cvv?")
-        CCexpire = input("What is your Credit Card Expiration Date?")
-        user.pushUser(Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password)
+        CreditCardnum = input("What is your Credit Card number?\n")
+        cvv = input("What is your cvv?\n")
+        CCexpire = input("What is your Credit Card Expiration Date?\n")
+        tmpUser.pushUser(Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password)
         user = 0
 
     elif user == 3:

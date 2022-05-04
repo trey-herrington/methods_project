@@ -18,6 +18,7 @@ except:
 
 cursor = connection.cursor()
 
+
 class user:
     def __init__(self, UserID):
         self.UserID = UserID
@@ -26,75 +27,69 @@ class user:
         return self.UserID
 
     def getUsername(self):
-        query = "SELECT Username FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT Username FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result[0]
 
     def getName(self):
-        query = "SELECT Name FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT Name FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result[0]
 
     def getBirthday(self):
-        query = "SELECT Birthday FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT Birthday FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result[0]
 
     def getCreditCardnum(self):
-        query = "SELECT CreditCardnum FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT CreditCardnum FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result[0]
 
     def getcvv(self):
-        query = "SELECT cvv FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT cvv FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result
 
     def getCCexpire(self):
-        query = "SELECT getCCexpire FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT getCCexpire FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result[0]
-    
+
     def getPassword(self):
-        query = "SELECT Password FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT Password FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result[0]
 
     def viewUserInformation(self):
-        query = "SELECT * FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "SELECT * FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()
         for x in result:
-            print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Number: ", x[3], "\nCVV: ", x[4], "\nCCexpire: ", x[5], "\nPassword: ", \
+            print("UserID: ", x[0], "\nName: ", x[1], "\nBirthday: ", x[2], "\nCredit Card Number: ", x[3], "\nCVV: ",
+                  x[4], "\nCCexpire: ", x[5], "\nPassword: ", \
                   x[6], "\n")
-    
+
     def pushUser(self, Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password):
-        user_query = "SELECT MAX(userID) FROM user"
+        user_query = "SELECT MAX(userID) FROM users"
         cursor.execute(user_query)
-        UserID = cursor.fetchall() + 1
-        query = "INSERT INTO 'user' ('UserID', 'Username', 'Name', 'Birthday', 'CreditCardnum', 'cvv', 'CCexpire', 'Password') VALUES (%d, %s, %s, %s, %d, %d, %s, %s)"
-        data = (UserID, Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password)
+        UserID = cursor.fetchall()
+        New_UserID = str(UserID[0][0] + 1)
+        query = "INSERT INTO users (UserID, Username, Password, Name, Birthday, CreditCardnum, cvv, CCexpire) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        data = (New_UserID, Username, Password, Name, Birthday, CreditCardnum, cvv, CCexpire)
         cursor.execute(query, data)
+        connection.commit()
         print("User added to system\n")
         return
 
     def popUser(self):
-        query = "DELETE FROM user WHERE UserID = %d"
-        data = self.UserID
-        cursor.execute(query, data)
+        query = "DELETE FROM users WHERE UserID = \"%d\"" % self.userID
+        cursor.execute(query)
         result = cursor.fetchall()

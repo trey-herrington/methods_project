@@ -195,7 +195,11 @@ while user == 0:
         CreditCardnum = input("What is your Credit Card number?\n")
         cvv = input("What is your cvv?\n")
         CCexpire = input("What is your Credit Card Expiration Date?\n")
-        tmpUser.pushUser(Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password)
+        Address = input("What is your Address?\n")
+        City = input("What is your City?\n")
+        State = input("What is your State?\n")
+        ZIP = input("What is your ZIP?\n")
+        tmpUser.pushUser(Username, Name, Birthday, CreditCardnum, cvv, CCexpire, Password, Address, City, State, ZIP)
         user = 0
 
     elif user == 3:

@@ -30,73 +30,85 @@ class user:
         self.UserID = UserID
 
     def getUsername(self):
-        query = "SELECT Username FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT Username FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getName(self):
-        query = "SELECT Name FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT Name FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getBirthday(self):
-        query = "SELECT Birthday FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT Birthday FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getCreditCardnum(self):
-        query = "SELECT CreditCardnum FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT CreditCardnum FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getcvv(self):
-        query = "SELECT cvv FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT cvv FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getCCexpire(self):
-        query = "SELECT getCCexpire FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT getCCexpire FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def getPassword(self):
-        query = "SELECT Password FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT Password FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getAddress(self):
-        query = "SELECT Address FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT Address FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getCity(self):
-        query = "SELECT City FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT City FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getState(self):
-        query = "SELECT State FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT State FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
     
     def getZIP(self):
-        query = "SELECT ZIP FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT ZIP FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         return result[0][0]
 
     def viewUserInformation(self):
-        query = "SELECT * FROM users WHERE UserID = \"%d\"" % getUserID(self)
+        userID = self.UserID
+        query = "SELECT * FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         result = cursor.fetchall()
         for x in result:
@@ -117,7 +129,8 @@ class user:
         return
 
     def popUser(self):
-        query = "DELETE FROM users WHERE UserID = \"%d\"" % self.userID
+        userID = self.UserID
+        query = "DELETE FROM users WHERE UserID = \"%d\"" % userID
         cursor.execute(query)
         connection.commit()
         print("User deleted")

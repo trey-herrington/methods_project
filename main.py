@@ -3,6 +3,7 @@ import pastOrder
 import user
 import mysql.connector
 import sys
+from datetime import date
 
 try:
     connection = mysql.connector.connect(
@@ -193,16 +194,37 @@ while user == 0:
                 user = int(input(
                     "1. View Items In Cart\n2. Add Item To Cart\n3. Remove Item From Cart\n4. Checkout Items From Cart\n5. Exit Program\n"))
                 if user == 1:
-                    print("view cart function")
+                    usCart.dispCart()
                     user = 0
                 elif user == 2:
                     print("add item function")
+                    newTitle = input("Please enter the title you would like to purchase: ")
+                    cursor.execute("SELECT MovieID FROM movies WHERE Title=\"%s\"" % newTitle)
+                    result = cursor.fetchall()
+                    newMovieID = result[0][0]
+                    cursor.execute("SELECT price FROM movies WHERE Title=\"%s\"" % newTitle)
+                    result = cursor.fetchall()
+                    newPrice = int(result[0][0])
+                    newAmount = int(input("How many copies would you like? "))
+                    newPrice = newAmount*newPrice
+                    usCart.addToCart(newMovieID,newTitle,newAmount,newPrice)
+
                     user = 0
                 elif user == 3:
                     print("remove item function")
+                    oldTitle = input("Please enter the Title you would like to remove: ")
+                    usCart.remItem(oldTitle)
                     user = 0
                 elif user == 4:
                     print("checkout function")
+                    print("Checking out")
+                    cursor.execute("SELECT * FROM cart WHERE UserID=\"%s\"" % usCart.getUserID())
+                    result = cursor.fetchall()
+                    for x in result:
+                        newItem = usCart.remItem(x[2])
+                        orderD = date.today()
+                        orderDate = orderD.year+"-"+orderD.month+"-"+orderD.day
+                        pOrder.pushOrderHistory(newItem[0],newItem[1],newItem[2],newItem[3],newItem[4],orderDate) 
                     user = 0
                 elif user == 5:
                     exit()

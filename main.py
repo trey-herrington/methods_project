@@ -144,7 +144,7 @@ while user == 0:
                             connection.commit()
                             Userinput = 0
 
-                        elif Userinput == 5:
+                        elif ifinput == 5:
                             break
 
                     user = 0

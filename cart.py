@@ -37,37 +37,37 @@ class cart:
         return self.UserID
 
     def getMovieID(self):
-        query = "SELECT MovieID FROM cart WHERE UserID=%s"
-        data = self.UserID
-        cursor.execute(query, data)
+        UserID = self.UserID
+        query = "SELECT MovieID FROM cart WHERE UserID = \"%d\"" % UserID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result
 
     def getTitle(self):
-        query = "SELECT Title FROM cart WHERE UserID=%s"
-        data = self.UserID
-        cursor.execute(query, data)
+        UserID = self.UserID
+        query = "SELECT Title FROM cart WHERE UserID = \"%d\"" % UserID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result
 
     def getAmount(self):
-        query = "SELECT amount FROM cart WHERE UserID=%s"
-        data = self.UserID
-        cursor.execute(query, data)
+        UserID = self.UserID
+        query = "SELECT amount FROM cart WHERE User = \"%d\"" % UserID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result
 
     def getTotal(self):
-        query = "SELECT total FROM cart WHERE UserID=%s"
-        data = self.UserID
-        cursor.execute(query, data)
+        UserID = self.UserID
+        query = "SELECT total FROM cart WHERE UserID = \"%d\"" % UserID
+        cursor.execute(query)
         result = cursor.fetchall()
         return result
 
     def dispCart(self):
-        query = "SELECT * FROM cart WHERE UserID=%s"
-        data = self.UserID
-        cursor.execute(query, data)
+        UserID = self.UserID
+        query = "SELECT * FROM cart WHERE UserID = \"%d\"" % UserID
+        cursor.execute(query)
         result = cursor.fetchall()
         for x in result:
             print("Movie ID: ", x[1], "\nTitle: ", x[2], "\nAmount: ", x[3], "\nTotal: ", x[4], "\nDate Ordered: ",
@@ -75,16 +75,15 @@ class cart:
         return
 
     def remItem(self, Title):
-        query = "SELECT * FROM cart WHERE UserID=%s"
-        data = self.UserID
-        cursor.execute(query, data)
+        UserID = self.UserID
+        query = "SELECT * FROM cart WHERE UserID = \"%d\"" % UserID
+        cursor.execute(query)
         result = cursor.fetchall()
         for x in cart:
             if Title == x[2]:
                 toReturn = x
-                query = "DELETE FROM cart WHERE Title=%s"
-                data = Title
-                cursor.execute(query, data)
+                query = "DELETE FROM cart WHERE Title = \"%s\"" % Title
+                cursor.execute(query)
                 connection.commit()
                 return toReturn
             else:
@@ -95,5 +94,6 @@ class cart:
         query = "INSERT INTO cart (UserID, MovieID, Title, amount, total) VALUES (%s,%s,%s,%s,%s)"
         data = (self.UserID, MovieID, Title, amount, total)
         cursor.execute(query, data)
+        connection.commit()
         print("Added to cart")
         return

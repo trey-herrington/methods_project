@@ -45,7 +45,8 @@ while user == 0:
                     query = "SELECT userID FROM users WHERE Username = \"%s\"" % Username
                     cursor.execute(query)
                     result = cursor.fetchall()
-                    pOrder = pastOrder.orderHist(result)
+                    pOrder = pastOrder.orderHist(result[0][0])
+                    tmpUser = user.user(result[0][0])
 
                     user = 0
                 else:
@@ -100,7 +101,39 @@ while user == 0:
                     print("edit shipping info function")
                     user = 0
                 elif user == 2:
-                    print("edit payment into function")
+                    Userinput = 0
+                    while Userinput == 0:
+                        
+                        print("edit payment info function")
+                        CreditCardnum = tmpUser.getCreditCardnum()
+                        cvv = tmpUser.getcvv()
+                        CCexpire = tmpUser.getCCexpire()
+                        print("CreditCardnum: ", CreditCardnum, "CVV: ", cvv, "Credit Card Expiration: ", ccexpire, "\n")
+                        
+                        Userinput = input("1. New CreditCardnum, 2. New CVV, 3. New Credit Card Expiration, 4. Exit Payment Information\n")
+                        if Userinput == 1:
+                            new_CreditCardnum = input("What is your new credit card number?\n")
+                            query = "UPDATE users SET CreditCardnum = \"%s\" WHERE CreditCardnum = \"%s\"" %new_CreditCardnum, %CreditCardnum
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 2:
+                            new_ccv = input("What is your new ccv?\n")
+                            query = "UPDATE users SET ccv = \"%s\" WHERE ccv = \"%s\"" %new_ccv, %ccv
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 3:
+                            new_CCexpire = input("What is your new Credit Card Expiration?\n")
+                            query = "UPDATE users SET CCexpire = \"%s\" WHERE CCexpire = \"%s\"" %new_CCexpire, %CCexpire
+                            cursor.execute(query)
+                            connection.commit()
+                            Userinput = 0
+                            
+                        elif Userinput == 4:
+                            break            
                     user = 0
                 elif user == 3:
                     print("delete account function")

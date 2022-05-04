@@ -116,4 +116,6 @@ class user:
     def popUser(self):
         query = "DELETE FROM users WHERE UserID = \"%d\"" % self.userID
         cursor.execute(query)
-        result = cursor.fetchall()
+        connection.commit()
+        print("User deleted")
+        return

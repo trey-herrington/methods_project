@@ -113,7 +113,8 @@ while user == 0:
                         if ifinput == 1:
                             new_Address = input("What is your new address?\n")
                             query = "UPDATE users SET Address = \"%s\" WHERE Address = \"%s\"" % new_Address, Address
-                            cursor.execute(query)
+                            data = (new_Address, Address)
+                            cursor.execute(query, data)
                             connection.commit()
                             Userinput = 0
 

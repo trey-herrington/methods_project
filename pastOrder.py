@@ -26,42 +26,42 @@ class orderHist:
         return UserID
 
     def getMovieID():
-        query = "SELECT MovieID FROM orderhistory WHERE UserID=%d"
+        query = "SELECT MovieID FROM orderhistory WHERE UserID=%s"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result
+        return result[0][0]
 
     def getTitle():
-        query = "SELECT Title FROM orderhistory WHERE UserID=%d"
+        query = "SELECT Title FROM orderhistory WHERE UserID=%s"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result
+        return result[0][0]
 
     def getAmount():
-        query = "SELECT amount FROM orderhistory WHERE UserID=%d"
+        query = "SELECT amount FROM orderhistory WHERE UserID=%s"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result
+        return result[0][0]
 
     def getTotal():
-        query = "SELECT total FROM orderhistory WHERE UserID=%d"
+        query = "SELECT total FROM orderhistory WHERE UserID=%s"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result
+        return result[0][0]
 
     def getDateOrdered():
-        query = "SELECT dateOrdered FROM orderhistory WHERE UserID=%d"
+        query = "SELECT dateOrdered FROM orderhistory WHERE UserID=%s"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
-        return result
+        return result[0][0]
 
     def viewOrderHistory(self):
-        query = "SELECT * FROM orderhistory WHERE UserID=%d"
+        query = "SELECT * FROM orderhistory WHERE UserID=%s"
         data = UserID
         cursor.execute(query,data)
         result = cursor.fetchall()
@@ -70,8 +70,9 @@ class orderHist:
         return
 
     def pushOrderHistory(MovieID,Title,amount,total,dateOrdered):
-        query = "INSERT INTO `orderhistory` (`UserID`, `MovieID`, `Title`, `amount`, `total`, `dateOrdered`) VALUES (%d,%d,%s,%d,%d,%s)"
+        query = "INSERT INTO orderhistory (UserID, MovieID, Title, amount, total, dateOrdered) VALUES (%s,%s,%s,%s,%s,%s)"
         data = (UserID,MovieID,Title,amount,total,dateOrdered)
         cursor.execute(query,data)
+        connection.commit()
         print("Order added to history")
         return 

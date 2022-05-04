@@ -109,30 +109,30 @@ while user == 0:
                         ZIP = tmpUser.getZIP()
                         print("Address: ", Address, "City: ", City, "State: ", State, "ZIP: ", ZIP)
 
-                        ifinput = input("1. New Address, 2. New City, 3. New State, 4. New ZIP, 5. Exit Shipment Information")
+                        ifinput = int(input("1. New Address, 2. New City, 3. New State, 4. New ZIP, 5. Exit Shipment Information\n"))
                         if ifinput == 1:
-                            new_Address = input("What is your new address?")
+                            new_Address = input("What is your new address?\n")
                             query = "UPDATE users SET Address = \"%s\" WHERE Address = \"%s\"" % new_Address, Address
                             cursor.execute(query)
                             connection.commit()
                             Userinput = 0
 
                         elif ifinput == 2:
-                            new_City = input("What is your new city?")
+                            new_City = input("What is your new city?\n")
                             query = "UPDATE users SET City = \"%s\" WHERE City = \"%s\"" % new_City, City
                             cursor.execute(query)
                             connection.commit()
                             Userinput = 0
 
                         elif ifinput == 3:
-                            new_State = input("What is your new State?")
+                            new_State = input("What is your new State?\n")
                             query = "UPDATE users SET State = \"%s\" WHERE State = \"%s\"" % new_State, State
                             cursor.execute(query)
                             connection.commit()
                             Userinput = 0
 
                         elif ifinput == 4:
-                            new_ZIP = input("What is your new ZIP")
+                            new_ZIP = input("What is your new ZIP?\n")
                             query = "UPDATE users SET ZIP = \"%s\" WHERE ZIP = \"%s\"" % new_ZIP, ZIP
                             cursor.execute(query)
                             connection.commit()
@@ -153,8 +153,7 @@ while user == 0:
                         print("CreditCardnum: ", CreditCardnum, "CVV: ", cvv, "Credit Card Expiration: ", CCexpire,
                               "\n")
 
-                        ifinput = input(
-                            "1. New CreditCardnum, 2. New CVV, 3. New Credit Card Expiration, 4. Exit Payment Information\n")
+                        ifinput = int(input("1. New CreditCardnum, 2. New CVV, 3. New Credit Card Expiration, 4. Exit Payment Information\n"))
                         if ifinput == 1:
                             new_CreditCardnum = input("What is your new credit card number?\n")
                             query = "UPDATE users SET CreditCardnum = \"%s\" WHERE CreditCardnum = \"%s\"" % new_CreditCardnum, CreditCardnum

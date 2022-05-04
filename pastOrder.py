@@ -70,8 +70,9 @@ class orderHist:
         return
 
     def pushOrderHistory(MovieID,Title,amount,total,dateOrdered):
-        query = "INSERT INTO `orderhistory` (`UserID`, `MovieID`, `Title`, `amount`, `total`, `dateOrdered`) VALUES (%d,%d,%s,%d,%d,%s)"
+        query = "INSERT INTO orderhistory (UserID, MovieID, Title, amount, total, dateOrdered) VALUES (%s,%s,%s,%s,%s,%s)"
         data = (UserID,MovieID,Title,amount,total,dateOrdered)
         cursor.execute(query,data)
+        connection.commit()
         print("Order added to history")
         return 

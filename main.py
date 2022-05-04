@@ -1,6 +1,7 @@
 import inventory
 import pastOrder
 import user
+import cart
 import mysql.connector
 import sys
 from datetime import date
@@ -48,7 +49,7 @@ while user == 0:
                     result = cursor.fetchall()
                     pOrder = pastOrder.orderHist(result[0][0])
                     tmpUser.setUserID(result[0][0])
-                    usCart = Cart.Cart(result[0][0])
+                    usCart = cart.cart(result[0][0])
 
                     user = 0
                 else:
@@ -144,7 +145,7 @@ while user == 0:
                             connection.commit()
                             Userinput = 0
 
-                        elif ifinput == 5:
+                        elif Userinput == 5:
                             break
 
                     user = 0
@@ -205,7 +206,6 @@ while user == 0:
                     usCart.dispCart()
                     user = 0
                 elif user == 2:
-                    print("add item function")
                     newTitle = input("Please enter the title you would like to purchase: ")
                     cursor.execute("SELECT MovieID FROM movies WHERE Title=\"%s\"" % newTitle)
                     result = cursor.fetchall()
@@ -232,7 +232,7 @@ while user == 0:
                         newItem = usCart.remItem(x[2])
                         orderD = date.today()
                         orderDate = orderD.year+"-"+orderD.month+"-"+orderD.day
-                        pOrder.pushOrderHistory(newItem[0],newItem[1],newItem[2],newItem[3],newItem[4],orderDate) 
+                        pOrder.pushOrderHistory(newItem[0],newItem[1],newItem[2],newItem[3],newItem[4],orderDate)
                     user = 0
                 elif user == 5:
                     exit()

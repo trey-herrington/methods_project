@@ -30,28 +30,28 @@ class user:
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result
+        return result[0]
 
     def getName(self):
         query = "SELECT Name FROM user WHERE UserID = %d"
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result
+        return result[0]
 
     def getBirthday(self):
         query = "SELECT Birthday FROM user WHERE UserID = %d"
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result
+        return result[0]
 
     def getCreditCardnum(self):
         query = "SELECT CreditCardnum FROM user WHERE UserID = %d"
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result
+        return result[0]
 
     def getcvv(self):
         query = "SELECT cvv FROM user WHERE UserID = %d"
@@ -65,14 +65,14 @@ class user:
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result
+        return result[0]
     
     def getPassword(self):
         query = "SELECT Password FROM user WHERE UserID = %d"
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result
+        return result[0]
 
     def viewUserInformation(self):
         query = "SELECT * FROM user WHERE UserID = %d"
@@ -98,4 +98,3 @@ class user:
         data = self.UserID
         cursor.execute(query, data)
         result = cursor.fetchall()
-        return result

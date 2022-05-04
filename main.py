@@ -48,6 +48,7 @@ while user == 0:
                     result = cursor.fetchall()
                     pOrder = pastOrder.orderHist(result[0][0])
                     tmpUser.setUserID(result[0][0])
+                    usCart = Cart.Cart(result[0][0])
 
                     user = 0
                 else:

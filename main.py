@@ -32,32 +32,31 @@ while user == 0:
         while (user == 1):
             Username = input("What is your Username?\n")
             Password = input("What is your Password?\n")
-            query = "SELECT Username FROM user WHERE Username = \"%s\"" % Username
-            data = (Username)
-            cursor.execute(query, data)
+            query = "SELECT Username FROM users WHERE Username = \"%s\"" % Username
+            print("test1")
+            cursor.execute(query)
             result = cursor.fetchall()
             if Username == result:
-                query = "SELECT Password FROM user WHERE Username = \"%s\"" % Username
-                data = (Username)
-                cursor.execute(query, data)
+                print("test2")
+                query = "SELECT Password FROM users WHERE Username = \"%s\"" % Username
+                cursor.execute(query)
                 result = cursor.fetchall()
-                
+
                 if Password == result:
-                    query = "SELECT userID FROM user WHERE Username = \"%s\"" % Username
-                    data = Username
-                    cursor.execute(query, data)
+                    print("test3")
+                    query = "SELECT userID FROM users WHERE Username = \"%s\"" % Username
+                    cursor.execute(query)
                     result = cursor.fetchall()
-                    pOrder = orderHist.orderHist(result)
-                    
+                    pOrder = pastOrder.orderHist(result)
+
                     user = 0
         else:
             print("Dum dum leave\n")
             print("Incorrect Username and Password, please try again.\n")
-            
 
         while user == 0:
             user = int(input(
-            "1. Inventory Options\n2. Account Options\n3. Cart Options\n4. Order History Options\n5. Exit Program\n"))
+                "1. Inventory Options\n2. Account Options\n3. Cart Options\n4. Order History Options\n5. Exit Program\n"))
 
         if user == 1:
             user = 0
@@ -158,7 +157,7 @@ while user == 0:
         Username = input("What is your Username?\n")
         Password = input("What is your Password?\n")
         Name = input("What is your name?\n")
-        Birthday = input("What is your birthday?\n)
+        Birthday = input("What is your birthday?\n")
         CreditCardnum = input("What is your Credit Card number?")
         cvv = input("What is your cvv?")
         CCexpire = input("What is your Credit Card Expiration Date?")
